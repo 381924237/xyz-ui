@@ -8,6 +8,7 @@
 import './iconfont.js'
 
 export default {
+  name: 'yIcon',
   props: ['name']
 }
 

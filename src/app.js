@@ -2,85 +2,14 @@ import Vue from 'vue'
 import Button from './button/button'
 import Icon from './icon/icon'
 import ButtonGroup from './button-group/button-group'
+import Input from './input/input'
 
 Vue.component('y-button',Button)
 Vue.component('y-icon',Icon)
 Vue.component('y-button-group',ButtonGroup)
+Vue.component('y-input',Input)
 
 new Vue({
   el: '#app'
 })
 
-
-//单元测试
-import chai from 'chai'
-import spies from 'chai-spies'
-chai.use(spies)
-
-const expect = chai.expect
-
-
-{
-  const constructor = Vue.extend(Button)
-  const vm = new constructor({
-    propsData: {
-      icon: 'like'
-    }
-  })
-  vm.$mount()
-  let useElement = vm.$el.querySelector('use')
-  let href = useElement.getAttribute('xlink:href')
-  expect(href).to.equal('#icon-like') 
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const constructor = Vue.extend(Button)
-  const vm = new constructor({
-    propsData: {
-      icon: 'like',
-      loading: true
-    }
-  })
-  vm.$mount()
-  let useElement = vm.$el.querySelectorAll('use')[1]
-  let href = useElement.getAttribute('xlink:href')
-  expect(href).to.equal('#icon-loading') 
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const div = document.createElement('div')
-  document.body.appendChild(div)
-  const constructor = Vue.extend(Button)
-  const vm = new constructor({
-    propsData: {
-      icon: 'like',
-      position: 'right'
-    }
-  })
-  vm.$mount(div)
-  let svg = vm.$el.querySelector('svg')
-  let {order} = window.getComputedStyle(svg)
-  expect(order).to.equal("2") 
-  vm.$el.remove()
-  vm.$destroy()
-}
-
-{
-  const constructor = Vue.extend(Button)
-  const vm = new constructor({
-    propsData: {
-      icon: 'like'
-    }
-  })
-  vm.$mount()
-  let spy = chai.spy(function(){})
-  
-  vm.$on('click',spy)
-  let button = vm.$el
-  button.click()
-  expect(spy).to.have.been.called()
-}

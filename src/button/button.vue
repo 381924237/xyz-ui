@@ -17,7 +17,8 @@
 <script>
 import Icon from '../icon/icon'
 
-export default {  
+export default {
+  name: 'yButton',  
   data () {
     return {
       isLoading: false,
@@ -65,6 +66,8 @@ export default {
 
 
 <style lang='scss' scoped>
+  $border-size: 2px;
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -90,7 +93,7 @@ export default {
     height: var(--button-height);
     padding: 0 1em;
     border-radius: var(--border-radius);
-    border: 2px solid var(--border-color);
+    border: $border-size solid var(--border-color);
     background: var(--button-bg);
     display: inline-flex;
     justify-content: center;
