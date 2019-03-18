@@ -29,29 +29,64 @@
     .box {
       margin: 10px 0;
     }
+    .demobox {
+      min-height: 50px;
+      background: #ccc;
+      border: 1px solid red; 
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <div class="box">
-      <y-input value="Default"></y-input>
+    <y-row :gutter="20">
+      <y-col :span="12" class="demobox">
+        <y-row align="center">
+          <y-col>1</y-col>
+          <y-col>2</y-col>
+          <y-col>3</y-col>
+          <y-col>4</y-col>
+          <y-col>5</y-col>
+        </y-row>
+      </y-col>
+      <y-col :span="12" class="demobox">2</y-col>
+    </y-row>
+    <y-row>
+      <y-col :span="8"></y-col>
+      <y-col :span="8" offset="1"></y-col>
+      <y-col :span="8"></y-col>
+    </y-row> 
+    <y-row>
+      <y-col :span="6"></y-col>
+      <y-col :span="6"></y-col>
+      <y-col :span="6"></y-col>
+      <y-col :span="6"></y-col>
+    </y-row>
+    <y-row>
+      <y-col :span="2"></y-col>
+      <y-col :span="22"></y-col>
+    </y-row>
+
+
+    <div style="margin-top: 100px">
+      <div class="box">
+        <y-input value="Default"></y-input>
+      </div>
+      <div class="box">
+        <y-input value="Disabled" disabled></y-input>
+      </div>
+      <div class="box">
+        <y-input value="Readonly" readonly></y-input>
+      </div>
+      <div class="box">
+        <y-input value="Error" error="Error Message"></y-input>
+      </div>
+      <div class="box">
+        <y-input v-model="message"></y-input>
+        <p>{{message}}</p>
+        <button @click="message += 1">改变message</button>
+      </div>
     </div>
-    <div class="box">
-      <y-input value="Disabled" disabled></y-input>
-    </div>
-    <div class="box">
-      <y-input value="Readonly" readonly></y-input>
-    </div>
-    <div class="box">
-      <y-input value="Error" error="Error Message"></y-input>
-    </div>
-    <div class="box">
-      <y-input v-model="message"></y-input>
-      <p>{{message}}</p>
-      <button @click="message += 1">改变message</button>
-    </div>
-    
 
 
     <div style="margin-top: 100px">
