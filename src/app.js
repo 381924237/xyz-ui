@@ -10,6 +10,11 @@ Vue.component('y-button-group',ButtonGroup)
 Vue.component('y-input',Input)
 
 new Vue({
-  el: '#app'
+  el: '#app',
+  data(){
+    return {
+      message: 'v-model'
+    }
+  }
 })
 

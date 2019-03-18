@@ -46,7 +46,11 @@
     <div class="box">
       <y-input value="Error" error="Error Message"></y-input>
     </div>
-    <div class="box"></div>
+    <div class="box">
+      <y-input v-model="message"></y-input>
+      <p>{{message}}</p>
+      <button @click="message += 1">改变message</button>
+    </div>
     
 
 
