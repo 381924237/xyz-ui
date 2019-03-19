@@ -47,7 +47,7 @@ describe('Button', () => {
         icon: 'setting',
       }
     }).$mount(div)
-    const icon = vm.$el.querySelector('svg')
+    const icon = vm.$el.querySelector('.icon-wrapper')
     expect(getComputedStyle(icon).order).to.eq('1')
     vm.$el.remove()
     vm.$destroy()
@@ -63,7 +63,7 @@ describe('Button', () => {
         position: 'right'
       }
     }).$mount(div)
-    const icon = vm.$el.querySelector('svg')
+    const icon = vm.$el.querySelector('.icon-wrapper')
     expect(getComputedStyle(icon).order).to.eq('2')
     vm.$el.remove()
     vm.$destroy()
