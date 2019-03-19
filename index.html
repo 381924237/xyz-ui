@@ -30,17 +30,41 @@
     .box {
       margin: 10px 0;
     }
+
     .demo {
       background: #ddd;
       border: 1px solid #666;
+      min-height: 50px;
+    }
+    .header {
+      background: #aaa;
+      height: 100px;
+    }
+    .footer {
+      background: #ccc;
       height: 50px;
+    }
+    .sider {
+      background: #ddd;
+      width: 100px;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <y-row>
+    <y-container style="height: 100vh">
+      <y-sider>sider</y-sider>
+      <y-container>
+        <y-header>header</y-header>
+        <y-main>main</y-main>
+        <y-footer>footer</y-footer>
+      </y-container>
+    </y-container>
+
+
+
+    <!-- <y-row>
       <y-col span="24" :ipad="{span:12}" :npc="{span:8}" :pc="{span:6}" :wpc={span:3}>
         <div class="demo"></div>
       </y-col>
@@ -59,7 +83,7 @@
       <y-col span="24" :ipad="{span:12}" :npc="{span:8}" :pc="{span:6}" :wpc={span:3}>
           <div class="demo"></div>
       </y-col>
-    </y-row>
+    </y-row> -->
 
 
 
