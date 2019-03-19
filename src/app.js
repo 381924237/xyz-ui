@@ -10,6 +10,7 @@ import Header from './layout/container/header'
 import Main from './layout/container/main'
 import Sider from './layout/container/sider'
 import Footer from './layout/container/footer'
+import plugin from './viewport/toast/plugin'
 
 Vue.component('y-button',Button)
 Vue.component('y-icon',Icon)
@@ -22,13 +23,18 @@ Vue.component('y-header',Header)
 Vue.component('y-main',Main)
 Vue.component('y-sider',Sider)
 Vue.component('y-footer',Footer)
-
+Vue.use(plugin)
 
 new Vue({
   el: '#app',
   data(){
     return {
       message: 'v-model'
+    }
+  },
+  methods: {
+    showToast(){
+      this.$toast('This is message')
     }
   }
 })
