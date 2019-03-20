@@ -33,8 +33,22 @@ new Vue({
     }
   },
   methods: {
-    showToast(){
-      this.$toast('This is message')
+    showToast1(){
+      this.$toast({
+        closeButton: true
+      })
+    },
+    showToast2(){
+      this.$toast({
+        closeButton: true,
+        position: 'bottom'
+      })
+    },
+    showToast3(){
+      this.$toast({
+        closeButton: true,
+        position: 'middle'
+      })
     }
   }
 })

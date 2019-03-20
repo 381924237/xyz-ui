@@ -1,17 +1,30 @@
 import Toast from './toast'
 
+let currentToast
+
 export default {
   install (Vue,options) {
-    Vue.prototype.$toast = function (message) {
-      let Constructor = Vue.extend(Toast)
-      let toast = new Constructor({
-        propsData: {
-          closeButton: true
-        }
+    Vue.prototype.$toast = function (toastOptions) {
+      if(currentToast){
+        currentToast.close()
+      }
+      currentToast = createToast({
+        Vue, 
+        propsData: toastOptions,
+        onClose:() => {currentToast = null}
       })
-      toast.$slots.default = [message]
-      toast.$mount()
-      document.body.appendChild(toast.$el)   
     }
   }
+}
+
+
+
+function createToast({Vue,propsData,onClose}){
+  let Constructor = Vue.extend(Toast)
+  let toast = new Constructor({propsData})
+  toast.$mount()
+  toast.visible = true
+  toast.$on('close',onClose)
+  document.body.appendChild(toast.$el)
+  return toast   
 }
