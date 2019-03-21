@@ -1,6 +1,7 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
+    <div class="line" ref="line"></div>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
     </div>
@@ -11,19 +12,36 @@
 <script>
 export default {
   name: 'YTabsHead',
-  inject: ['eventBus']
+  inject: ['eventBus'],
+  mounted(){
+    this.eventBus.$on('update:selected',(item,vm) => {
+      let {width, height, top, left} = vm.$el.getBoundingClientRect()
+      let {left: wrapperLeft} = this.$el.getBoundingClientRect()
+      this.$refs.line.style.width = `${width}px`
+      this.$refs.line.style.left = `${left - wrapperLeft}px`
+    })
+  }
 }
 </script>
 
 <style lang='scss' scoped>
   $tab-height: 40px;
+  $active-color: rgb(0, 179, 134);
   .tabs-head {
     display: flex;
     height: $tab-height;
     justify-content: flex-start;
-    align-items: center; 
-    .actions-wrapper{
+    align-items: center;
+    position: relative; 
+    > .actions-wrapper{
       margin-left: auto;
+    }
+    > .line{
+      width: 96px;
+      position: absolute;
+      bottom: 0;
+      border-bottom: 2px solid $active-color;
+      transition: all .3s;
     }
   }
 </style>
