@@ -39,7 +39,7 @@ export default {
 <style lang='scss' scoped>
   .tabs-pane{
     &.active{
-      background: rgba(0,0,0,.06);
+
     }
   }
 </style>
