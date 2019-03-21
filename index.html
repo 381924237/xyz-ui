@@ -53,9 +53,39 @@
 
 <body>
   <div id="app">
-    <button @click="showToast1">Click</button>
+    <y-tabs :selected.sync="selectedTab">
+      <y-tabs-head>
+        <template slot="actions">
+          <button>Extra Action</button>
+        </template>
+        <y-tabs-item name="sports">
+          <y-icon name="setting"></y-icon>体育
+        </y-tabs-item>
+        <y-tabs-item name="finance" disabled>
+          财经
+        </y-tabs-item>
+        <y-tabs-item name="game">
+          游戏
+        </y-tabs-item>
+      </y-tabs-head>
+      <y-tabs-body>
+        <y-tabs-pane name="sports">
+          体育资讯
+        </y-tabs-pane>
+        <y-tabs-pane name="finance">
+          财经资讯
+        </y-tabs-pane name="game">
+        <y-tabs-pane>
+          游戏资讯
+        </y-tabs-pane>
+      </y-tabs-body>
+    </y-tabs>
+
+
+
+    <!-- <button @click="showToast1">Click</button>
     <button @click="showToast2">Click</button>
-    <button @click="showToast3">Click</button>
+    <button @click="showToast3">Click</button> -->
 
 
 
