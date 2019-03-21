@@ -1,6 +1,8 @@
 const expect = chai.expect;
 import Vue from 'vue'
 import Toast from '../src/viewport/toast/toast'
+import Icon from '../src/icon/icon'
+Vue.component('y-icon',Icon)
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
