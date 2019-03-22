@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover"> 
+  <div class="popover" ref="popover"> 
     <div class="content-wrapper" v-if="visible" ref="contentWrapper"
       :class="{[`position-${position}`]:true}"
     >
@@ -27,10 +27,30 @@ export default {
       validator(value){
         return ['top','bottom','left','right'].indexOf(value) >= 0
       }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value){
+        return ['click','hover'].indexOf(value) >= 0
+      }
+    }
+  },
+  computed: {
+    openEvent(){
+      return (this.trigger === 'click') ? 'click' : 'mouseenter'
+    },
+    closeEvent(){
+      return (this.trigger === 'click') ? 'click' : 'mouseleave'      
     }
   },
   mounted(){
-  
+    if(this.trigger === 'click'){
+      this.$refs.popover.addEventListener('click',this.onClick)
+    }else{
+      this.$refs.popover.addEventListener('mouseenter',this.open)
+      this.$refs.popover.addEventListener('mouseleave',this.close)
+    }
   },
   methods: {
     positionContent(){
