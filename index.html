@@ -53,7 +53,28 @@
 
 <body>
   <div id="app">
-    <y-tabs :selected.sync="selectedTab">
+    <y-popover style="margin-top: 30px">
+      <template slot="content">
+        <div>内容1</div>
+      </template>
+      <button>
+        Click me
+      </button> 
+    </y-popover>
+    <y-popover>
+      <template slot="content">
+        <div>内容2</div>
+      </template>
+      <button>
+        Click me
+      </button> 
+    </y-popover>
+
+
+
+
+
+    <!-- <y-tabs :selected.sync="selectedTab">
       <y-tabs-head>
         <template slot="actions">
           <button>Extra Action</button>
@@ -79,7 +100,7 @@
           游戏资讯
         </y-tabs-pane>
       </y-tabs-body>
-    </y-tabs>
+    </y-tabs> -->
 
 
 
