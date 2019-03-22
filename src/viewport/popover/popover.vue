@@ -52,6 +52,15 @@ export default {
       this.$refs.popover.addEventListener('mouseleave',this.close)
     }
   },
+  beforeDestroy(){
+    const {popover} = this.$refs
+    if (this.trigger === 'click'){
+      popover.removeEventListener('click', this.onClick)
+    }else{
+      popover.removeEventListener('mouseenter', this.open)
+      popover.removeEventListener('mouseleave', this.close)
+    }
+  },
   methods: {
     positionContent(){
       const {contentWrapper, triggerWrapper} = this.$refs
@@ -148,6 +157,7 @@ export default {
       margin-top: -10px;
       &::before, &::after{
         left: 10px;
+        border-bottom: none;
       }
       &::before{
         border-top-color: $border-color;
@@ -163,6 +173,7 @@ export default {
       margin-top: 10px;
       &::before, &::after{
         left: 10px;
+        border-top: none;
       }
       &::before{
         border-bottom-color: $border-color;
@@ -173,12 +184,14 @@ export default {
         bottom: $calc;
       }
     }
+
     &.position-left{
       transform: translateX(-100%);
       margin-left: -10px;
       &::before, &::after{
         top: 50%;
         transform: translateY(-50%);
+        border-right: none;
       }
       &::before{
         border-left-color: $border-color;
@@ -189,11 +202,13 @@ export default {
         left: $calc;
       }
     }
+    
     &.position-right{
       margin-left: 10px;
       &::before, &::after{
         top: 50%;
         transform: translateY(-50%);
+        border-left: none;
       }
       &::before{
         border-right-color: $border-color;
