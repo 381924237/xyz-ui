@@ -1,7 +1,8 @@
 <template>
   <div class="collapse-item"> 
-    <div class="title" @click="open = !open">
+    <div class="title" @click="toggle" :class="{selected: selected.indexOf(name)>=0}">
       {{title}}
+      <y-icon name="right" class="icon"></y-icon>
     </div>
     <div class="content" v-if="open">
       <slot></slot>
@@ -11,18 +12,50 @@
 
 
 <script>
+import Icon from '../../icon/icon'
 export default {
   name: 'YCollapseItem',
+  components: {
+    Icon
+  },
   props: {
     title: {
       type: String,
       required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    selected(){
+      return this.$parent.selected
     }
   },
   data(){
     return {
       open: false
     }
+  },
+  inject: ['eventBus'],
+  methods: {
+    toggle(){
+      if(this.open){
+        this.eventBus.$emit('update:removeSelected',this.name)
+      }else{
+        this.eventBus.$emit('update:addSelected',this.name)
+      }
+    }
+  },
+  mounted(){
+    this.eventBus.$on('update:selected',(names) => {
+      if(names.indexOf(this.name) >= 0){
+        this.open = true
+      }else{
+        this.open = false
+      }
+    })
   }
 }
 </script>
@@ -39,8 +72,20 @@ export default {
       min-height: 32px;
       display: flex;
       align-items: center;
-      padding: 0 .5em;
+      padding: .5em .5em;
       cursor: pointer;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      > .icon {
+        margin-left: auto;
+        transition: all .4s;
+      }
+      &.selected{
+        > .icon{
+           transform: rotateZ(90deg);
+        }
+      }
     }    
     &:first-child{
       > .title{
@@ -55,7 +100,7 @@ export default {
       }
     }
     > .content{
-      padding: .5em .5em;
-    }
+      padding: .3em .5em;
+    }    
   }
 </style>

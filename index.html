@@ -53,13 +53,12 @@
 
 <body>
   <div id="app">
-    <y-collapse>
-      <y-collapse-item title="111">内容1</y-collapse-item>
-      <y-collapse-item title="222">内容2</y-collapse-item>
-      <y-collapse-item title="333">内容3</y-collapse-item>
-    </y-collapse>
-
-
+      <y-collapse :selected.sync="selectedItem" single>
+        <y-collapse-item title="标题1" name="1">内容1</y-collapse-item>
+        <y-collapse-item title="标题2" name="2">内容2</y-collapse-item>
+        <y-collapse-item title="标题3" name="3">内容3</y-collapse-item>
+      </y-collapse>
+    
 
 
 

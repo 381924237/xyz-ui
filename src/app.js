@@ -47,7 +47,8 @@ new Vue({
   data(){
     return {
       message: 'v-model',
-      selectedTab: 'sports'
+      selectedTab: 'sports',
+      selectedItem: []
     }
   },
   methods: {
