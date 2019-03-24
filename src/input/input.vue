@@ -67,7 +67,6 @@ export default {
         border-color: $border-color-hover; 
       }
       &:focus{
-        box-shadow: inset 0 1px 3px $box-shadow-color;
         border-color: $border-color-hover;
         outline: none;
       }

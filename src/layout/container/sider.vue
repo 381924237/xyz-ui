@@ -15,7 +15,7 @@ export default {
     closeButton: {type: Boolean, default: false}  
   },
   components: {
-    Icon
+    'y-icon': Icon
   }
 }
 </script>

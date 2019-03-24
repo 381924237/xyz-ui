@@ -14,7 +14,7 @@ import Icon from '../../icon/icon'
 export default {
   name: 'YToast',
   components: {
-    Icon
+    'y-icon': Icon
   },
   props: {
     autoClose: {
@@ -68,7 +68,7 @@ export default {
 
 <style lang='scss' scoped>
   $font-size: 18px;
-  $font-color: rgb(24, 144, 255);
+  $font-color: rgb(0, 179, 134);
   $toast-min-height: 40px;
   $toast-bg: #fff;
   $close-color: #b3b3b3;
@@ -90,6 +90,7 @@ export default {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 25;
     &.position-top{
       top: 3%;
       .toast{

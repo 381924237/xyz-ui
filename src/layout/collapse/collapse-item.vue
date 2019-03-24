@@ -16,7 +16,7 @@ import Icon from '../../icon/icon'
 export default {
   name: 'YCollapseItem',
   components: {
-    Icon
+    'y-icon': Icon
   },
   props: {
     title: {

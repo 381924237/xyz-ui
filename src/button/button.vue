@@ -7,7 +7,7 @@
     </span>
     <y-icon v-if="icon && !isLoading" :name="icon" class="icon"></y-icon>
     <y-icon v-show="loading && isLoading" name="loading" class="loading icon"></y-icon>
-    <div class="content">
+    <div class="y-content">
       <slot></slot>
     </div>
   
@@ -19,6 +19,9 @@ import Icon from '../icon/icon'
 
 export default {
   name: 'yButton',  
+  components: {
+    'y-icon': Icon
+  },
   data () {
     return {
       isLoading: false,
@@ -67,7 +70,13 @@ export default {
 
 <style lang='scss' scoped>
   $border-size: 2px;
-
+  $font-size: 14px;
+  $button-height: 32px;
+  $button-bg: #fff;
+  $border-color: #999;
+  $border-radius: 4px;
+  $border-color-focus: rgb(0, 179, 134);
+  $border-color-hover: rgb(0, 179, 134);
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -89,12 +98,12 @@ export default {
   .y-button {
     cursor: pointer;
     padding: 0 1em;
-    font-size: var(--font-size);
-    height: var(--button-height);
+    font-size: $font-size;
+    height: $button-height;
     padding: 0 1em;
-    border-radius: var(--border-radius);
-    border: $border-size solid var(--border-color);
-    background: var(--button-bg);
+    border-radius: $border-radius;
+    border: $border-size solid $border-color;
+    background: $button-bg;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +116,7 @@ export default {
       order: 1;
       margin-right: .1em;
     } 
-    > .content {
+    > .y-content {
       position: relative;
       z-index: 2;
       order: 2;
@@ -119,16 +128,16 @@ export default {
         margin-right: 0;
         margin-left: .1em;
       }
-      > .content {
+      > .y-content {
         order: 1;
       }
     }
     &:hover{
-      border-color: var(--border-color-hover);
+      border-color: $border-color-hover;
     }
     &:focus{
       outline: none;
-      border-color: var(--border-color-focus);
+      border-color: $border-color-focus;
     }
     .loading {
       animation: 1s spin infinite linear;

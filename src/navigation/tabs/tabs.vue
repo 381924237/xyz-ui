@@ -12,7 +12,7 @@ export default {
   name: 'YTabs',
   props: {
     selected: {
-      type: String,
+      type: String | Number,
       required: true
     },
     direction: {
